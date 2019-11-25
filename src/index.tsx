@@ -10,7 +10,7 @@ const startApp = () => {
 	serviceWorker.register();
 };
 
-if (window.cordova) {
+if ('cordova' in window) {
 	document.addEventListener('deviceready', startApp, false);
 } else {
 	startApp();
