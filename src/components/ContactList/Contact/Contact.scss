@@ -1,0 +1,13 @@
+.Contact {
+	padding: 1rem 2rem;
+
+	cursor: pointer;
+
+	&:not(:last-child) {
+		border-bottom: 1px solid #ccc;
+	}
+
+	&:active {
+		background: #ccc;
+	}
+}
