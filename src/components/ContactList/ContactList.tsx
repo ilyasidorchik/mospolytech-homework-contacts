@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Contact from './Contact';
+import { getContactList, addContact } from '../../utils/contacts';
 import './ContactList.scss';
 
 interface IContact {
@@ -11,12 +12,9 @@ const ContactList: React.FC = () => {
 	const [contacts, setContacts] = useState<Array<IContact> | null>(null);
 
 	useEffect(() => {
-		setContacts([
-			{ name: 'Иван Иванов' },
-			{ name: 'Иван Иванов' },
-			{ name: 'Иван Иванов' },
-			{ name: 'Иван Иванов' }
-		]);
+		addContact('Иван Иванов');
+
+		setContacts(getContactList());
 	}, []);
 
 	return (
