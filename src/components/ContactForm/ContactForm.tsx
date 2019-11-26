@@ -1,7 +1,6 @@
 import React, { useState, useCallback, ChangeEvent } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import Title from '../Title';
 import './ContactForm.scss';
 
 type IContactForm = {
@@ -36,7 +35,6 @@ const ContactForm: React.FC<IContactForm> = ({ id, businessFunc }) => {
 		<Redirect to={`/contact/${id}`} />
 	) : (
 		<div className="ContactForm">
-			<Title className="ContactForm-Title">New Contact</Title>
 			<form className="ContactForm-Form" onSubmit={handleSubmit}>
 				<input
 					className="ContactForm-Input"

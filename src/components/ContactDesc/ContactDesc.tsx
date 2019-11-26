@@ -24,6 +24,7 @@ const ContactDesc: React.FC = () => {
 	return (
 		<div className="ContactDesc">
 			<Title className="ContactDesc-Title">{value}</Title>
+			
 		</div>
 	);
 };
