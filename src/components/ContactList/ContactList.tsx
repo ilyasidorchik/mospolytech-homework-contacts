@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Contact from './Contact';
-import { getContactList, addContact } from '../../utils/contacts';
+import { getContactList } from '../../utils/contacts';
 import Title from '../Title';
 import './ContactList.scss';
 
