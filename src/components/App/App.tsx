@@ -11,7 +11,7 @@ const App: React.FC = () => {
 			<BrowserRouter>
 				<Switch>
 					<Route path="/" component={ContactList} exact />
-					<Route path="/contact" component={ContactDesc} />
+					<Route path="/contact/:id" component={ContactDesc} />
 					<Redirect to="/" />
 				</Switch>
 			</BrowserRouter>

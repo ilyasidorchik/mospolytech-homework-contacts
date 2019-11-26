@@ -5,10 +5,15 @@ import './Contact.scss';
 
 interface IContact {
 	name: string;
+	id: number;
 }
 
-const Contact: React.FC<IContact> = ({ name }) => {
-	return <Link to="/contact" className="Contact">{name}</Link>;
+const Contact: React.FC<IContact> = ({ name, id }) => {
+	return (
+		<Link to={`/contact/${id}`} className="Contact">
+			{name}
+		</Link>
+	);
 };
 
 export default Contact;

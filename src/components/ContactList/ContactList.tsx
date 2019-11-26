@@ -22,7 +22,9 @@ const ContactList: React.FC = () => {
 	return (
 		<div className="ContactList">
 			{contacts &&
-				contacts.map(({ name }, i) => <Contact name={name} key={i} />)}
+				contacts.map(({ name }, i) => (
+					<Contact name={name} id={i} key={i} />
+				))}
 
 			{contacts === null && (
 				<div className="ContactList-Caption">
