@@ -1,30 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import { getContact } from '../../utils/contacts';
 import Title from '../Title';
 import './ContactDesc.scss';
+import ContactForm from '../ContactForm';
 
 const ContactDesc: React.FC = () => {
-	const [value, setValue] = useState<string>('');
-	const { id } = useParams();
-	const index = Number(id);
-
-	useEffect(() => {
-		const contact: any = getContact(index);
-
-		if (contact) {
-			if ('name' in contact) {
-				const firstName = contact['name'];
-				setValue(firstName);
-			}
-		}
-	}, [index]);
+	let { id } = useParams();
+	const contact: any = getContact(Number(id));
+	const firstName = contact['name'];
 
 	return (
 		<div className="ContactDesc">
-			<Title className="ContactDesc-Title">{value}</Title>
-			
+			<Title className="ContactDesc-Title">Contact</Title>
+			<ContactForm initialState={firstName} id={Number(id)} />
 		</div>
 	);
 };

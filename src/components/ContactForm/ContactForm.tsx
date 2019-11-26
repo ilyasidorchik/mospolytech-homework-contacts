@@ -4,13 +4,20 @@ import { Redirect } from 'react-router-dom';
 import './ContactForm.scss';
 
 type IContactForm = {
+	initialState?: string;
 	id: number;
-	businessFunc: (name: any) => void;
+	businessFunc?: (name: any) => void;
 };
 
-const ContactForm: React.FC<IContactForm> = ({ id, businessFunc }) => {
+const logic = (name: any) => name;
+
+const ContactForm: React.FC<IContactForm> = ({
+	initialState = '',
+	id,
+	businessFunc = logic('name')
+}) => {
 	const [contactProcess, isContactProccessed] = useState<boolean>(false);
-	const [value, setValue] = useState<string>('');
+	const [value, setValue] = useState<string>(initialState);
 
 	const handleInputChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
