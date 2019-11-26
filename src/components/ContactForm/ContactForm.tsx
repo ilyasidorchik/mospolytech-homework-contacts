@@ -1,7 +1,7 @@
 import React, { useState, useCallback, ChangeEvent, MouseEvent } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import { removeContact } from '../../utils/contacts';
+import { editContact, removeContact } from '../../utils/contacts';
 import './ContactForm.scss';
 
 type IContactForm = {
@@ -10,6 +10,7 @@ type IContactForm = {
 	businessFunc?: (name: any) => void;
 	autoFocus?: boolean;
 	buttons?: Array<string>;
+	edit?: boolean;
 };
 
 const logic = (name: any) => name;
@@ -19,7 +20,8 @@ const ContactForm: React.FC<IContactForm> = ({
 	id,
 	businessFunc = logic('name'),
 	buttons = [],
-	autoFocus = false
+	autoFocus = false,
+	edit = false
 }) => {
 	const [contactProcess, isContactProccessed] = useState<boolean>(false);
 	const [contactRemoved, isContactRemoved] = useState<boolean>(false);
@@ -29,8 +31,10 @@ const ContactForm: React.FC<IContactForm> = ({
 		(e: ChangeEvent<HTMLInputElement>) => {
 			const { value } = e.target;
 			setValue(value);
+
+			if (edit) editContact(id, value);
 		},
-		[setValue]
+		[id, setValue, edit]
 	);
 
 	const handleSubmit = useCallback(

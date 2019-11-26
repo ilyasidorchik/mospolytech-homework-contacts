@@ -32,6 +32,18 @@ const addContact = name => {
 	localStorage.setItem('contacts', JSON.stringify(savedContactList));
 };
 
+const editContact = (id, name) => {
+	let savedContactList = getContactList();
+
+	if (savedContactList) {
+		let editedContact = savedContactList[id];
+
+		editedContact.name = name;
+
+		localStorage.setItem('contacts', JSON.stringify(savedContactList));
+	}
+};
+
 const removeContact = id => {
 	let savedContactList = localStorage.getItem('contacts');
 
@@ -53,4 +65,4 @@ const removeContact = id => {
 	}
 };
 
-export { getContactList, getContact, addContact, removeContact };
+export { getContactList, getContact, addContact, editContact, removeContact };

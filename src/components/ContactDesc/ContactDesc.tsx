@@ -22,6 +22,7 @@ const ContactDesc: React.FC = () => {
 				initialState={firstName}
 				id={Number(id)}
 				buttons={['delete']}
+				edit={true}
 			/>
 		</div>
 	);
