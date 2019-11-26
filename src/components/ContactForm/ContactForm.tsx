@@ -7,6 +7,7 @@ type IContactForm = {
 	initialState?: string;
 	id: number;
 	businessFunc?: (name: any) => void;
+	buttons?: Array<string>;
 };
 
 const logic = (name: any) => name;
@@ -14,7 +15,8 @@ const logic = (name: any) => name;
 const ContactForm: React.FC<IContactForm> = ({
 	initialState = '',
 	id,
-	businessFunc = logic('name')
+	businessFunc = logic('name'),
+	buttons = []
 }) => {
 	const [contactProcess, isContactProccessed] = useState<boolean>(false);
 	const [value, setValue] = useState<string>(initialState);
@@ -53,10 +55,27 @@ const ContactForm: React.FC<IContactForm> = ({
 				/>
 			</div>
 
-			<button className="ContactForm-Button">Add contact</button>
-			<button className="ContactForm-Button ContactForm-Button_danger">
-				Remove contact
-			</button>
+			{buttons.map((item, i) => {
+				switch (item) {
+					case 'create':
+						return (
+							<button className="ContactForm-Button" key={i}>
+								Add contact
+							</button>
+						);
+					case 'delete':
+						return (
+							<button
+								className="ContactForm-Button ContactForm-Button_danger"
+								key={i}
+							>
+								Remove contact
+							</button>
+						);
+					default:
+						return true;
+				}
+			})}
 		</form>
 	);
 };

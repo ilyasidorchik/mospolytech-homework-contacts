@@ -14,7 +14,7 @@ const ContactDesc: React.FC = () => {
 	return (
 		<div className="ContactDesc">
 			<Title className="ContactDesc-Title">Contact</Title>
-			<ContactForm initialState={firstName} id={Number(id)} />
+			<ContactForm initialState={firstName} id={Number(id)} buttons={['delete']} />
 		</div>
 	);
 };

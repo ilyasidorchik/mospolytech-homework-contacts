@@ -10,12 +10,14 @@ const ContactAdd: React.FC = () => {
 	const businessFunc = addContact;
 
 	return (
-		<>
-			<div className="ContactAdd">
-				<Title>New Contact</Title>
-				<ContactForm id={id} businessFunc={businessFunc} />
-			</div>
-		</>
+		<div className="ContactAdd">
+			<Title>New Contact</Title>
+			<ContactForm
+				id={id}
+				businessFunc={businessFunc}
+				buttons={['create']}
+			/>
+		</div>
 	);
 };
 
