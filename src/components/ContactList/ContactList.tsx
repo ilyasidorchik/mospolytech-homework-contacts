@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Contact from './Contact';
 import { getContactList, addContact } from '../../utils/contacts';
+import Title from '../Title';
 import './ContactList.scss';
 
 interface IContact {
@@ -12,13 +13,12 @@ const ContactList: React.FC = () => {
 	const [contacts, setContacts] = useState<Array<IContact> | null>(null);
 
 	useEffect(() => {
-		addContact('Иван Иванов');
-
 		setContacts(getContactList());
 	}, []);
 
 	return (
 		<div className="ContactList">
+			<Title className="ContactList-Title">Contacts</Title>
 			{contacts &&
 				contacts.map(({ name }, i) => (
 					<Contact name={name} id={i} key={i} />
