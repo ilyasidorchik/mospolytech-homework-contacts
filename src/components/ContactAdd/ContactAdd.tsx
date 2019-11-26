@@ -1,8 +1,8 @@
 import React, { useState, useCallback, ChangeEvent } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import Title from '../Title';
 import { getContactList, addContact } from '../../utils/contacts';
+import Title from '../Title';
 import './ContactAdd.scss';
 
 const ContactAdd: React.FC = () => {
