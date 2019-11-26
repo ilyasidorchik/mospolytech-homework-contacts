@@ -5,7 +5,7 @@ const getContactList = () => {
 	}
 };
 
-const getContact = (id)  => {
+const getContact = id => {
 	let savedContactList = localStorage.getItem('contacts');
 
 	if (savedContactList) {
@@ -17,7 +17,7 @@ const getContact = (id)  => {
 	}
 };
 
-const addContact = (name) => {
+const addContact = name => {
 	let savedContactList = getContactList();
 
 	if (savedContactList == null) {
@@ -32,4 +32,25 @@ const addContact = (name) => {
 	localStorage.setItem('contacts', JSON.stringify(savedContactList));
 };
 
-export { getContactList, getContact, addContact };
+const removeContact = id => {
+	let savedContactList = localStorage.getItem('contacts');
+
+	if (savedContactList) {
+		savedContactList = JSON.parse(savedContactList);
+
+		if (savedContactList) {
+			savedContactList.splice(id, 1);
+
+			if (savedContactList.length > 0) {
+				localStorage.setItem(
+					'contacts',
+					JSON.stringify(savedContactList)
+				);
+			} else {
+				localStorage.removeItem('contacts');
+			}
+		}
+	}
+};
+
+export { getContactList, getContact, addContact, removeContact };

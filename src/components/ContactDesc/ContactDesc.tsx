@@ -9,12 +9,20 @@ import ContactForm from '../ContactForm';
 const ContactDesc: React.FC = () => {
 	let { id } = useParams();
 	const contact: any = getContact(Number(id));
-	const firstName = contact['name'];
+	let firstName;
+
+	if (contact) {
+		firstName = contact['name'];
+	}
 
 	return (
 		<div className="ContactDesc">
 			<Title className="ContactDesc-Title">Contact</Title>
-			<ContactForm initialState={firstName} id={Number(id)} buttons={['delete']} />
+			<ContactForm
+				initialState={firstName}
+				id={Number(id)}
+				buttons={['delete']}
+			/>
 		</div>
 	);
 };

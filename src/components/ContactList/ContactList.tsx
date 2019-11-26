@@ -31,7 +31,7 @@ const ContactList: React.FC = () => {
 					<Contact name={name} id={i} key={i} />
 				))}
 
-			{contacts === null && (
+			{!contacts && (
 				<div className="ContactList-Caption">
 					Здесь будут ваши контакты
 				</div>
