@@ -1,6 +1,10 @@
 .Contact {
+	display: block;
 	padding: 1rem 2rem;
 
+	text-decoration: none;
+
+	color: #000;
 	cursor: pointer;
 
 	&:not(:last-child) {

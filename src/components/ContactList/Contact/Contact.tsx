@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './Contact.scss';
 
@@ -7,7 +8,7 @@ interface IContact {
 }
 
 const Contact: React.FC<IContact> = ({ name }) => {
-	return <div className="Contact">{name}</div>;
+	return <Link to="/contact" className="Contact">{name}</Link>;
 };
 
 export default Contact;

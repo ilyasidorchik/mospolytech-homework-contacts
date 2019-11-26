@@ -10,14 +10,14 @@ interface IContact {
 const ContactList: React.FC = () => {
 	const [contacts, setContacts] = useState<Array<IContact> | null>(null);
 
-	// useEffect(() => {
-	// 	setContacts([
-	// 		{ name: 'Иван Иванов' },
-	// 		{ name: 'Иван Иванов' },
-	// 		{ name: 'Иван Иванов' },
-	// 		{ name: 'Иван Иванов' }
-	// 	]);
-	// }, []);
+	useEffect(() => {
+		setContacts([
+			{ name: 'Иван Иванов' },
+			{ name: 'Иван Иванов' },
+			{ name: 'Иван Иванов' },
+			{ name: 'Иван Иванов' }
+		]);
+	}, []);
 
 	return (
 		<div className="ContactList">
