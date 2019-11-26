@@ -15,6 +15,7 @@ const ContactAdd: React.FC = () => {
 			<ContactForm
 				id={id}
 				businessFunc={businessFunc}
+				autoFocus={true}
 				buttons={['create']}
 			/>
 		</div>

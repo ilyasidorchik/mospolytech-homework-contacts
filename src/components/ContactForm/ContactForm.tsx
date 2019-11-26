@@ -7,6 +7,7 @@ type IContactForm = {
 	initialState?: string;
 	id: number;
 	businessFunc?: (name: any) => void;
+	autoFocus?: boolean;
 	buttons?: Array<string>;
 };
 
@@ -16,7 +17,8 @@ const ContactForm: React.FC<IContactForm> = ({
 	initialState = '',
 	id,
 	businessFunc = logic('name'),
-	buttons = []
+	buttons = [],
+	autoFocus = false
 }) => {
 	const [contactProcess, isContactProccessed] = useState<boolean>(false);
 	const [value, setValue] = useState<string>(initialState);
@@ -49,7 +51,7 @@ const ContactForm: React.FC<IContactForm> = ({
 					className="ContactForm-Input"
 					type="text"
 					placeholder="First Name"
-					autoFocus
+					autoFocus={autoFocus}
 					value={value}
 					onChange={handleInputChange}
 				/>
