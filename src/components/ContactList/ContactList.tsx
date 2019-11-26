@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import Contact from './Contact';
 import { getContactList, addContact } from '../../utils/contacts';
@@ -18,7 +19,13 @@ const ContactList: React.FC = () => {
 
 	return (
 		<div className="ContactList">
-			<Title className="ContactList-Title">Contacts</Title>
+			<header className="ContactList-Header">
+				<Title className="ContactList-Title">Contacts</Title>
+				<Link to="/new" className="ContactList-Button">
+					+
+				</Link>
+			</header>
+
 			{contacts &&
 				contacts.map(({ name }, i) => (
 					<Contact name={name} id={i} key={i} />

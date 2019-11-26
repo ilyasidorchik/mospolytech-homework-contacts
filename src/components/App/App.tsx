@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import ContactList from '../ContactList';
 import ContactDesc from '../ContactDesc';
+import ContactAdd from '../ContactAdd';
 import './App.scss';
 
 const App: React.FC = () => {
@@ -12,6 +13,7 @@ const App: React.FC = () => {
 				<Switch>
 					<Route path="/" component={ContactList} exact />
 					<Route path="/contact/:id" component={ContactDesc} />
+					<Route path="/new" component={ContactAdd} />
 					<Redirect to="/" />
 				</Switch>
 			</BrowserRouter>

@@ -1,6 +1,27 @@
 .ContactList {
+	&-Header {
+		display: flex;
+		justify-content: space-between;
+		padding-left: 1rem;
+	}
+
 	&-Title {
-		margin: 1.5rem 0 0 1rem;
+		margin-top: 1.5rem;
+	}
+
+	&-Button {
+		padding: 1.25rem 1rem 0;
+
+		font-size: 2rem;
+		color: #2e7bf6;
+		text-decoration: none;
+
+		cursor: pointer;
+
+		&:hover,
+		&:active {
+			opacity: 0.75;
+		}
 	}
 
 	&-Caption {
