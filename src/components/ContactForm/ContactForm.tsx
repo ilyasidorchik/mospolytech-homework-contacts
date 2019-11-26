@@ -23,8 +23,8 @@ const ContactForm: React.FC<IContactForm> = ({
 	autoFocus = false,
 	edit = false
 }) => {
-	const [contactProcess, isContactProccessed] = useState<boolean>(false);
-	const [contactRemoved, isContactRemoved] = useState<boolean>(false);
+	const [contactAdded, isContactAdded] = useState<boolean>(false);
+	const [contactProcessed, isContactProcessed] = useState<boolean>(false);
 	const [value, setValue] = useState<string>(initialState);
 
 	const handleInputChange = useCallback(
@@ -41,18 +41,21 @@ const ContactForm: React.FC<IContactForm> = ({
 		(e: ChangeEvent<HTMLFormElement>) => {
 			e.preventDefault();
 
-			businessFunc(value);
-
-			isContactProccessed(true);
+			if (!edit) {
+				businessFunc(value);
+				isContactAdded(true);
+			} else {
+				isContactProcessed(true);
+			}
 		},
-		[businessFunc, value]
+		[businessFunc, value, edit]
 	);
 
-	if (contactRemoved) {
+	if (contactProcessed) {
 		return <Redirect to="/" />;
 	}
 
-	if (contactProcess) {
+	if (contactAdded) {
 		return <Redirect to={`/contact/${id}`} />;
 	}
 
@@ -83,12 +86,13 @@ const ContactForm: React.FC<IContactForm> = ({
 
 							removeContact(id);
 
-							isContactRemoved(true);
+							isContactProcessed(true);
 						};
 
 						return (
 							<button
 								className="ContactForm-Button ContactForm-Button_danger"
+								type="button"
 								onClick={handleRemoveClick}
 								key={i}
 							>
