@@ -1,0 +1,13 @@
+.ContactLink {
+	display: block;
+	margin-bottom: -1rem;
+	padding: 0.3rem 1rem 1rem;
+
+	text-decoration: none;
+	color: #2e7bf6;
+
+	&:hover,
+	&:active {
+		opacity: 0.75;
+	}
+}
