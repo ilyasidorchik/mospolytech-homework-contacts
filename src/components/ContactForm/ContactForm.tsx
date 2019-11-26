@@ -41,8 +41,8 @@ const ContactForm: React.FC<IContactForm> = ({
 	return contactProcess ? (
 		<Redirect to={`/contact/${id}`} />
 	) : (
-		<div className="ContactForm">
-			<form className="ContactForm-Form" onSubmit={handleSubmit}>
+		<form className="ContactForm" onSubmit={handleSubmit}>
+			<div className="ContactForm-InputGroup">
 				<input
 					className="ContactForm-Input"
 					type="text"
@@ -51,9 +51,13 @@ const ContactForm: React.FC<IContactForm> = ({
 					value={value}
 					onChange={handleInputChange}
 				/>
-				<button className="ContactForm-Button">Add contact</button>
-			</form>
-		</div>
+			</div>
+
+			<button className="ContactForm-Button">Add contact</button>
+			<button className="ContactForm-Button ContactForm-Button_danger">
+				Remove contact
+			</button>
+		</form>
 	);
 };
 

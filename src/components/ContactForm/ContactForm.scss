@@ -1,9 +1,13 @@
 .ContactForm {
-	&-Form {
+	display: flex;
+	flex-direction: column;
+
+	border-top: 1px solid #ccc;
+
+	&-InputGroup {
 		display: flex;
 		flex-direction: column;
-
-		border-top: 1px solid #ccc;
+		margin-bottom: 1.5rem;
 	}
 
 	&-Input {
@@ -17,7 +21,7 @@
 	}
 
 	&-Button {
-		margin-top: 1.5rem;
+		margin-bottom: 0.5rem;
 		padding: 0.5rem 1rem;
 
 		font-size: 1rem;
@@ -27,6 +31,10 @@
 		border: none;
 		box-shadow: none;
 		cursor: pointer;
+
+		&_danger {
+			color: #ec4f3f;
+		}
 
 		&:hover,
 		&:active {
