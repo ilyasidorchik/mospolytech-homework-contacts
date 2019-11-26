@@ -2,9 +2,9 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import { getContact } from '../../utils/contacts';
-import ContactLink from '../ContactLink';
-import Title from '../Title';
-import ContactForm from '../ContactForm';
+import ContactLink from '../../components/ContactLink';
+import Title from '../../components/Title';
+import ContactForm from '../../components/ContactForm';
 import './ContactDesc.scss';
 
 const ContactDesc: React.FC = () => {

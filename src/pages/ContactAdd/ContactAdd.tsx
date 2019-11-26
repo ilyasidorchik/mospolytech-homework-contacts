@@ -1,9 +1,9 @@
 import React from 'react';
 
-import ContactForm from '../ContactForm';
+import ContactForm from '../../components/ContactForm';
 import { getContactList, addContact } from '../../utils/contacts';
-import ContactLink from '../ContactLink';
-import Title from '../Title';
+import ContactLink from '../../components/ContactLink';
+import Title from '../../components/Title';
 import './ContactAdd.scss';
 
 const ContactAdd: React.FC = () => {

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Contact from './Contact';
 import { getContactList } from '../../utils/contacts';
-import Title from '../Title';
+import Title from '../../components/Title';
 import './ContactList.scss';
 
 interface IContact {
