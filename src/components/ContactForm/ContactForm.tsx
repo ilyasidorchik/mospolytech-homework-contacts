@@ -4,8 +4,12 @@ import { Redirect } from 'react-router-dom';
 import { editContact, removeContact } from '../../utils/contacts';
 import './ContactForm.scss';
 
+type IContact = {
+	name: string;
+};
+
 type IContactForm = {
-	initialState?: string;
+	initialState?: IContact;
 	id: number;
 	businessFunc?: (name: any) => void;
 	autoFocus?: boolean;
@@ -16,7 +20,7 @@ type IContactForm = {
 const logic = (name: any) => name;
 
 const ContactForm: React.FC<IContactForm> = ({
-	initialState = '',
+	initialState = null,
 	id,
 	businessFunc = logic('name'),
 	buttons = [],
@@ -25,16 +29,16 @@ const ContactForm: React.FC<IContactForm> = ({
 }) => {
 	const [contactAdded, isContactAdded] = useState<boolean>(false);
 	const [contactProcessed, isContactProcessed] = useState<boolean>(false);
-	const [value, setValue] = useState<string>(initialState);
+	const [contact, setContact] = useState<IContact | null>(initialState);
 
 	const handleInputChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
 			const { value } = e.target;
-			setValue(value);
+			setContact({ ...contact, name: value });
 
 			if (edit) editContact(id, value);
 		},
-		[id, setValue, edit]
+		[id, contact, setContact, edit]
 	);
 
 	const handleSubmit = useCallback(
@@ -42,13 +46,13 @@ const ContactForm: React.FC<IContactForm> = ({
 			e.preventDefault();
 
 			if (!edit) {
-				businessFunc(value);
+				businessFunc(contact);
 				isContactAdded(true);
 			} else {
 				isContactProcessed(true);
 			}
 		},
-		[businessFunc, value, edit]
+		[businessFunc, contact, edit]
 	);
 
 	if (contactProcessed) {
@@ -67,7 +71,7 @@ const ContactForm: React.FC<IContactForm> = ({
 					type="text"
 					placeholder="First Name"
 					autoFocus={autoFocus}
-					value={value}
+					value={contact ? contact['name'] : ''}
 					onChange={handleInputChange}
 				/>
 			</div>

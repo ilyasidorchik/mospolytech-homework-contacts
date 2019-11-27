@@ -10,18 +10,13 @@ import './ContactDesc.scss';
 const ContactDesc: React.FC = () => {
 	let { id } = useParams();
 	const contact: any = getContact(Number(id));
-	let firstName;
-
-	if (contact) {
-		firstName = contact['name'];
-	}
 
 	return (
 		<div className="ContactDesc">
 			<ContactLink />
 			<Title className="ContactDesc-Title">Contact</Title>
 			<ContactForm
-				initialState={firstName}
+				initialState={contact}
 				id={Number(id)}
 				buttons={['delete']}
 				edit={true}

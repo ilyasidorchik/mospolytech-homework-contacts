@@ -17,7 +17,7 @@ const getContact = id => {
 	}
 };
 
-const addContact = name => {
+const addContact = contact => {
 	let savedContactList = getContactList();
 
 	if (savedContactList == null) {
@@ -25,9 +25,7 @@ const addContact = name => {
 		savedContactList = getContactList();
 	}
 
-	savedContactList.push({
-		name
-	});
+	savedContactList.push(contact);
 
 	localStorage.setItem('contacts', JSON.stringify(savedContactList));
 };
