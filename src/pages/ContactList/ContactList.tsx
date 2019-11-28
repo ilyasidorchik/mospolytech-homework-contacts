@@ -9,6 +9,7 @@ import './ContactList.scss';
 interface IContact {
 	lastName: string;
 	firstName: string;
+	middleName: string;
 }
 
 const ContactList: React.FC = () => {

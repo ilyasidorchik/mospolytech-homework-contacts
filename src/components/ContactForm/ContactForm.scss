@@ -18,6 +18,12 @@
 		border: none;
 		border-bottom: 1px solid #ccc;
 		outline: none !important;
+
+		&_space {
+			margin-top: 1.5rem;
+
+			border-top: 1px solid #ccc;
+		}
 	}
 
 	&-Button {

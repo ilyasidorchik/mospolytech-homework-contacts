@@ -6,6 +6,7 @@ import React, {
 	KeyboardEvent
 } from 'react';
 import { Redirect } from 'react-router-dom';
+import cx from 'classnames';
 
 import { editContact, removeContact } from '../../utils/contacts';
 import './ContactForm.scss';
@@ -14,6 +15,9 @@ type IContact = {
 	[key: string]: any;
 	lastName?: string;
 	firstName?: string;
+	middleName?: string;
+	phone?: string;
+	email?: string;
 };
 
 type IContactForm = {
@@ -90,10 +94,24 @@ const ContactForm: React.FC<IContactForm> = ({
 					{
 						name: 'firstName',
 						text: 'First Name'
+					},
+					{
+						name: 'middleName',
+						text: 'Middle Name'
+					},
+					{
+						name: 'phone',
+						text: 'Phone'
+					},
+					{
+						name: 'email',
+						text: 'Email'
 					}
 				].map(({ name, text }, i) => (
 					<input
-						className="ContactForm-Input"
+						className={cx('ContactForm-Input', {
+							'ContactForm-Input_space': i === 3
+						})}
 						type="text"
 						name={name}
 						placeholder={text}

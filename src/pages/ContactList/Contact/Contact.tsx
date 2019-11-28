@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import './Contact.scss';
 
 type IContactData = {
-	lastName: string;
-	firstName: string;
+	lastName?: string;
+	firstName?: string;
+	middleName?: string;
 };
 
 interface IContact {
@@ -13,9 +14,12 @@ interface IContact {
 	id: number;
 }
 
-const Contact: React.FC<IContact> = ({ data: { lastName, firstName }, id }) => (
+const Contact: React.FC<IContact> = ({
+	data: { lastName, firstName, middleName },
+	id
+}) => (
 	<Link className="Contact" to={`/contact/${id}`}>
-		{lastName} {firstName}
+		{lastName} {firstName} {middleName}
 	</Link>
 );
 
