@@ -30,13 +30,11 @@ const addContact = contact => {
 	localStorage.setItem('contacts', JSON.stringify(savedContactList));
 };
 
-const editContact = (id, name) => {
+const editContact = (id, contact) => {
 	let savedContactList = getContactList();
 
 	if (savedContactList) {
-		let editedContact = savedContactList[id];
-
-		editedContact.name = name;
+		savedContactList.splice(id, 1, contact);
 
 		localStorage.setItem('contacts', JSON.stringify(savedContactList));
 	}

@@ -3,17 +3,20 @@ import { Link } from 'react-router-dom';
 
 import './Contact.scss';
 
+type IContactData = {
+	lastName: string;
+	firstName: string;
+};
+
 interface IContact {
-	name: string;
+	data: IContactData;
 	id: number;
 }
 
-const Contact: React.FC<IContact> = ({ name, id }) => {
-	return (
-		<Link to={`/contact/${id}`} className="Contact">
-			{name}
-		</Link>
-	);
-};
+const Contact: React.FC<IContact> = ({ data: { lastName, firstName }, id }) => (
+	<Link className="Contact" to={`/contact/${id}`}>
+		{lastName} {firstName}
+	</Link>
+);
 
 export default Contact;

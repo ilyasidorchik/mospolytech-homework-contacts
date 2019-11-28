@@ -7,7 +7,8 @@ import Title from '../../components/Title';
 import './ContactList.scss';
 
 interface IContact {
-	name: string;
+	lastName: string;
+	firstName: string;
 }
 
 const ContactList: React.FC = () => {
@@ -27,8 +28,8 @@ const ContactList: React.FC = () => {
 			</header>
 
 			{contacts &&
-				contacts.map(({ name }, i) => (
-					<Contact name={name} id={i} key={i} />
+				contacts.map((data, i) => (
+					<Contact data={data} id={i} key={i} />
 				))}
 
 			{!contacts && (

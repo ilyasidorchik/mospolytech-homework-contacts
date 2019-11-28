@@ -1,11 +1,19 @@
-import React, { useState, useCallback, ChangeEvent, MouseEvent } from 'react';
+import React, {
+	useState,
+	useCallback,
+	ChangeEvent,
+	MouseEvent,
+	KeyboardEvent
+} from 'react';
 import { Redirect } from 'react-router-dom';
 
 import { editContact, removeContact } from '../../utils/contacts';
 import './ContactForm.scss';
 
 type IContact = {
-	name: string;
+	[key: string]: any;
+	lastName?: string;
+	firstName?: string;
 };
 
 type IContactForm = {
@@ -33,13 +41,21 @@ const ContactForm: React.FC<IContactForm> = ({
 
 	const handleInputChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
-			const { value } = e.target;
-			setContact({ ...contact, name: value });
+			const { name, value } = e.target;
+			setContact({ ...contact, [name]: value });
 
-			if (edit) editContact(id, value);
+			if (edit) editContact(id, { ...contact, [name]: value });
 		},
 		[id, contact, setContact, edit]
 	);
+
+	const handleInputKeyPress = useCallback((e: KeyboardEvent) => {
+		const { key } = e;
+
+		if (key === 'Enter') {
+			isContactProcessed(true);
+		}
+	}, []);
 
 	const handleSubmit = useCallback(
 		(e: ChangeEvent<HTMLFormElement>) => {
@@ -52,7 +68,7 @@ const ContactForm: React.FC<IContactForm> = ({
 				isContactProcessed(true);
 			}
 		},
-		[businessFunc, contact, edit]
+		[businessFunc, contact, edit, isContactAdded, isContactProcessed]
 	);
 
 	if (contactProcessed) {
@@ -66,14 +82,28 @@ const ContactForm: React.FC<IContactForm> = ({
 	return (
 		<form className="ContactForm" onSubmit={handleSubmit}>
 			<div className="ContactForm-InputGroup">
-				<input
-					className="ContactForm-Input"
-					type="text"
-					placeholder="First Name"
-					autoFocus={autoFocus}
-					value={contact ? contact['name'] : ''}
-					onChange={handleInputChange}
-				/>
+				{[
+					{
+						name: 'lastName',
+						text: 'Last Name'
+					},
+					{
+						name: 'firstName',
+						text: 'First Name'
+					}
+				].map(({ name, text }, i) => (
+					<input
+						className="ContactForm-Input"
+						type="text"
+						name={name}
+						placeholder={text}
+						autoFocus={i === 0 ? autoFocus : false}
+						value={contact ? contact[name] : ''}
+						onChange={handleInputChange}
+						onKeyPress={edit ? handleInputKeyPress : undefined}
+						key={i}
+					/>
+				))}
 			</div>
 
 			{buttons.map((item, i) => {
