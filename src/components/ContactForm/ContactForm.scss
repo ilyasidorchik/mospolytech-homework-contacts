@@ -4,6 +4,11 @@
 
 	border-top: 1px solid #ccc;
 
+	&_edited {
+		justify-content: space-between;
+		height: 85vh;
+	}
+
 	&-InputGroup {
 		display: flex;
 		flex-direction: column;

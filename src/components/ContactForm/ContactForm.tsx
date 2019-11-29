@@ -84,7 +84,12 @@ const ContactForm: React.FC<IContactForm> = ({
 	}
 
 	return (
-		<form className="ContactForm" onSubmit={handleSubmit}>
+		<form
+			className={cx('ContactForm', {
+				ContactForm_edited: edit
+			})}
+			onSubmit={handleSubmit}
+		>
 			<div className="ContactForm-InputGroup">
 				{[
 					{
