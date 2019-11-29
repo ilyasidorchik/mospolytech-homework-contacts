@@ -7,11 +7,13 @@ In the first screen, contact list, you’ll see full name only. Other propertie
 ### How to see app
 
 You should clone my repository and run these commands:
-<br>`yarn`
-<br>`yarn build`
-<br>`yarn global add cordova`
-<br>`cordova emulate ios`
+```
+yarn
+yarn build
+yarn global add cordova
+cordova emulate ios
+```
 
 ---
 
-The app was made as a homework at Moscow Polytech on subject ’Mobile integration’.
+The app was made as a homework at Moscow Polytech on subject ’Mobile integration’
